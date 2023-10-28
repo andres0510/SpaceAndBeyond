@@ -1,6 +1,12 @@
 Feature: Booking speace travel on Space & Beyond
 
-  Scenario: Scenario 1
-    Given step 1
-    When step 2
-    Then step 3
+  Scenario Outline: Book a travel on Space and Beyond using a filter
+    Given a group of travelers logged on Space and Beyond
+    When the journey information is entered
+    And destination is selected by using "<filter>" filter
+    Then the travel is successfully scheduled
+    Examples:
+    |filter|
+    |planet|
+    |color |
+    |price |
