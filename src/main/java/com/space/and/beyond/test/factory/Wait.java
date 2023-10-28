@@ -28,4 +28,12 @@ public class Wait {
         }
     }
 
+    public static void forElementInvisible(WebElement element) {
+        try {
+            webDriverWait.until(ExpectedConditions.invisibilityOf(element));
+        } catch (NoSuchElementException e) {
+            Report.reportFail(String.format(TIMEOUT, e.getMessage()));
+        }
+    }
+
 }
