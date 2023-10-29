@@ -18,4 +18,11 @@ public class DataUtils {
         return String.format(FORMAT, faker.number().digits(3), faker.number().digits(2), faker.number().digits(4));
     }
 
+    public static double getPriceAsDouble(String price) {
+        price = price.replace("$", "");
+        price = price.replace(",", "");
+        price = price.trim();
+        return Double.parseDouble(price);
+    }
+
 }

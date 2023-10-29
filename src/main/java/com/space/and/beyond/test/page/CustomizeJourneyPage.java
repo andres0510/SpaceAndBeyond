@@ -17,11 +17,17 @@ public class CustomizeJourneyPage extends GeneralPage {
     @FindBy(xpath = "//input[@value='Adults (18+)']")
     private WebElement slctAdults;
 
+    @FindBy(xpath = "//li[text()='Adults (18+)']/parent::ul")
+    private WebElement optBoxAdults;
+
     @FindBy(xpath = "//li[text()='Adults (18+)']/following-sibling::li")
     private List<WebElement> optAdults;
 
     @FindBy(xpath = "//input[@value='Children (0-7)']")
     private WebElement slctChildren;
+
+    @FindBy(xpath = "//li[text()='Children (0-7)']/parent::ul")
+    private WebElement optBoxChildren;
 
     @FindBy(xpath = "//li[text()='Children (0-7)']/following-sibling::li")
     private List<WebElement> optChildren;
@@ -37,11 +43,11 @@ public class CustomizeJourneyPage extends GeneralPage {
     }
 
     public String selectAdults() {
-        return DriverManager.selectRandomOption(slctAdults, optAdults);
+        return DriverManager.selectRandomOption(slctAdults, optBoxAdults, optAdults);
     }
 
     public String selectChildren() {
-        return DriverManager.selectRandomOption(slctChildren, optChildren);
+        return DriverManager.selectRandomOption(slctChildren, optBoxChildren, optChildren);
     }
 
 }

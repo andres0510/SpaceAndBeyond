@@ -53,7 +53,7 @@ public class DriverManager {
         driver.manage().window().maximize();
     }
 
-    public static String selectRandomOption(WebElement select, List<WebElement> options) {
+    public static String selectRandomOption(WebElement select, WebElement optBox, List<WebElement> options) {
         int index;
         String optionSelected = "";
         if (options.isEmpty()) {
@@ -62,7 +62,20 @@ public class DriverManager {
             select.click();
             index = DataUtils.getFaker().number().numberBetween(0, options.size()-1);
             optionSelected = options.get(index).getText();
+            Wait.forElementVisible(optBox);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             options.get(index).click();
+            Wait.forElementInvisible(optBox);
+            //Todo revisar
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         return optionSelected;
     }
@@ -79,7 +92,6 @@ public class DriverManager {
     private static void findMonth(Date date){
         DatePickerPage datePickerPage = new DatePickerPage();
         String foundDate = datePickerPage.getSelectedMonth();
-        System.out.println(foundDate);
         int expectedMonth = DateUtils.getDateAsInt(date, MONTH_NUMBER);
         int foundMonth = DateUtils.getDateAsInt(DateUtils.parseString(foundDate, MMMM_YYYY), MONTH_NUMBER);
         int difference = expectedMonth - foundMonth;

@@ -7,6 +7,6 @@ Feature: Booking speace travel on Space & Beyond
     Then the travel is successfully scheduled
     Examples:
     |filter|
-    |planet|
+    |launch|
     |color |
     |price |
