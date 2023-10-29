@@ -10,3 +10,4 @@
 - JavaFaker 1.0.2 (By DiUS Computing Pty Ltd)
 ### Test Execution:
 - Space and Beyond Test: ./gradlew test --tests BookingRunner
+- Pet Store Test: ./gradlew test --tests PetStoreRunner
