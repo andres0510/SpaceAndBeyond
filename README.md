@@ -9,4 +9,4 @@
 - WebDriverManager 5.6.0 (By Boni Garcia)
 - JavaFaker 1.0.2 (By DiUS Computing Pty Ltd)
 ### Test Execution:
-Soon
+- Space and Beyond Test: ./gradlew test --tests BookingRunner
