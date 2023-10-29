@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/features/BookingTravel.feature",
-    glue = "com.space.and.beyond.test.steps.gui",
+    features = "src/test/resources/features/PetStore.feature",
+    glue = "com.space.and.beyond.test.steps.api",
     plugin = {"pretty", "html:target/cucumber", "json:target/result.json"}
 )
-public class BookingRunner {
+public class PetStoreRunner {
 }

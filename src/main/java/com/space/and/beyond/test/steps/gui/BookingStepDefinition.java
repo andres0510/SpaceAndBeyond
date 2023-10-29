@@ -1,4 +1,4 @@
-package com.space.and.beyond.test.steps;
+package com.space.and.beyond.test.steps.gui;
 
 import com.space.and.beyond.test.controller.AssertionController;
 import com.space.and.beyond.test.controller.BookingController;

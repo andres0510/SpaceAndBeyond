@@ -1,4 +1,4 @@
-package com.space.and.beyond.test.steps;
+package com.space.and.beyond.test.steps.gui;
 
 import com.space.and.beyond.test.factory.DriverManager;
 import com.space.and.beyond.test.utils.Report;

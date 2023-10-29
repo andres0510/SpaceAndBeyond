@@ -17,4 +17,8 @@ public class AssertionController {
         assertThat(foundAmount).isEqualTo(expectedAmount);
     }
 
+    public static void validateStatusCode(int statusCode) {
+        assertThat(statusCode).isEqualTo(200);
+    }
+
 }
