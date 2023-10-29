@@ -1,5 +1,6 @@
 package com.space.and.beyond.test.steps;
 
+import com.space.and.beyond.test.controller.AssertionController;
 import com.space.and.beyond.test.controller.BookingController;
 import com.space.and.beyond.test.controller.GeneralController;
 import com.space.and.beyond.test.controller.LoginController;
@@ -30,11 +31,13 @@ public class BookingStepDefinition {
     public void destinationIsSelectedByUsingFilter(String filter){
         BookingController.applyFilter(filter);
         BookingController.selectDestination(travel);
+        BookingController.fillCheckoutInformation(travel.getCheckoutInfo());
     }
 
     @Then("the travel is successfully scheduled")
-    public void travelIsSuccessfullyScheduled() throws InterruptedException {
-        Thread.sleep(10000);
+    public void travelIsSuccessfullyScheduled() {
+        AssertionController.validateBookingTotalAmount(travel);
+        BookingController.finishBooking();
     }
 
 }

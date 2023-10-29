@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import java.util.Date;
 import java.util.List;
 import static com.space.and.beyond.test.utils.dictionary.DateFormat.DAY;
@@ -63,19 +64,9 @@ public class DriverManager {
             index = DataUtils.getFaker().number().numberBetween(0, options.size()-1);
             optionSelected = options.get(index).getText();
             Wait.forElementVisible(optBox);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            new Actions(driver).moveToElement(options.get(index)).perform();
             options.get(index).click();
             Wait.forElementInvisible(optBox);
-            //Todo revisar
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
         }
         return optionSelected;
     }

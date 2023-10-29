@@ -1,13 +1,12 @@
 package com.space.and.beyond.test.controller;
 
+import com.space.and.beyond.test.model.dto.CheckoutInfo;
 import com.space.and.beyond.test.model.dto.Travel;
+import com.space.and.beyond.test.page.CheckoutPage;
 import com.space.and.beyond.test.page.CustomizeJourneyPage;
 import com.space.and.beyond.test.page.DestinationPage;
 import com.space.and.beyond.test.utils.DataUtils;
 import com.space.and.beyond.test.utils.Report;
-
-import javax.swing.text.Utilities;
-
 import static com.space.and.beyond.test.utils.dictionary.Message.FAIL;
 import static com.space.and.beyond.test.utils.dictionary.Message.SUCCESS;
 
@@ -53,6 +52,30 @@ public class BookingController {
         }
     }
 
-    //Todo select destination
+    public static void fillCheckoutInformation(CheckoutInfo checkoutInfo) {
+        CheckoutPage checkoutPage = new CheckoutPage();
+        checkoutPage.typeName(checkoutInfo.getName());
+        checkoutPage.typeEmailAddress(checkoutInfo.getEmail());
+        checkoutPage.typeSocialSecurityNumber(checkoutInfo.getSocialSecurityNumber());
+        enterPhone(checkoutInfo.getPhoneNumber());
+        checkoutPage.enterHealthInsurance(checkoutInfo.getHealthInsurance());
+    }
+
+    public static void finishBooking() {
+        CheckoutPage checkoutPage = new CheckoutPage();
+        checkoutPage.clickAcceptTermsAndConditions();
+        checkoutPage.clickBtnPayNow();
+    }
+
+    private static void enterPhone(String phoneNumber) {
+        CheckoutPage checkoutPage = new CheckoutPage();
+        checkoutPage.typePhoneNumber(DataUtils.getFaker().lorem().word());
+        checkoutPage.clickSocialSecurityNumber();
+        String errorMessage = checkoutPage.getErrorMessagePhoneNumber();
+        String countryCode = DataUtils.getCountryCode(errorMessage);
+        String firstDigit = DataUtils.getFirstDigitForPhone(errorMessage);
+        String completePhone = String.format("+%s %s%s", countryCode, firstDigit, phoneNumber);
+        checkoutPage.typePhoneNumber(completePhone);
+    }
 
 }

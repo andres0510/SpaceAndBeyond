@@ -1,4 +1,4 @@
-Feature: Booking speace travel on Space & Beyond
+Feature: Booking space travel on Space & Beyond
 
   Scenario Outline: Book a travel on Space and Beyond using a filter
     Given a group of travelers logged on Space and Beyond
@@ -9,4 +9,3 @@ Feature: Booking speace travel on Space & Beyond
     |filter|
     |launch|
     |color |
-    |price |
